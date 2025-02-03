@@ -85,4 +85,8 @@ git remote add origin https://github.com/username/username.github.io.git
 git push -u origin main
 ```
 
+主题配置见：[[配置butterfly主题]]
+
+Obsidian配置见：[[配置Hexo+Obsidian]]
+
 More info: [github-pages](https://hexo.io/docs/github-pages)
