@@ -1,0 +1,9 @@
+{
+  "userIgnoreFilters": [
+    "scaffolds/",
+    "themes/"
+  ],
+  "attachmentFolderPath": "./",
+  "newLinkFormat": "relative",
+  "newFileLocation": "current"
+}
