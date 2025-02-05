@@ -1,9 +1,9 @@
 ---
-title: 在Windows系统上部署原版whisper
+title: 在Windows系统上部署openai-whisper模型
 date: 2025-02-05 13:47:09
 tags:
 ---
-本文介绍如何在Windows系统上部署openai/whisper。除开ffmpeg的安装外，其余步骤都可参见[openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision](https://github.com/openai/whisper)。建议使用scoop安装ffmpeg，因为Chocolatey无法更改自定义默认下载目录。
+本文介绍如何在Windows系统上部署openai/whisper模型。除开ffmpeg的安装外，其余步骤都可参见[openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision](https://github.com/openai/whisper)。建议使用scoop安装ffmpeg，因为Chocolatey无法更改自定义默认下载目录。
 
 ## 安装Scoop和ffmpeg音频处理库
 
