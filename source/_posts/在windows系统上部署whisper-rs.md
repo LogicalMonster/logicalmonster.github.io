@@ -24,11 +24,17 @@ cd whisper-rs
 
 下载[ggerganov/whisper.cpp at main](https://huggingface.co/ggerganov/whisper.cpp/tree/main)中的模型到项目根目录(如ggml-base.en.bin)。还可下载[whisper.cpp/samples at master · ggerganov/whisper.cpp](https://github.com/ggerganov/whisper.cpp/tree/master/samples)中的测试音频文件到项目根目录(如samples_jfk.wav)。
 
-```
+```powershell
 cargo run --example basic_use .\ggml-base.en.bin .\samples_jfk.wav
 cargo run --example audio_transcription
 ```
 
-注意，`example/audio_transcription.rs`需手动设置模型和测试音频文件路径。对于ggml-tiny模型，`audio_transcription`似乎有bug会触发panic。
+注意，`example/audio_transcription.rs`需手动设置模型和测试音频文件路径。对于ggml-tiny模型，`audio_transcription`似乎有bug会触发panic。对于Windows系统，若遇到段错误，请用下述下述代码追踪堆栈信息：
+
+```powershell
+$env:RUST_BACKTRACE='full'; cargo run
+```
+
+总结下whisper模型本地部署的体验，感觉对于中文的识别不太行，主要适用于对英文音频的转录。最好优先使用python本地部署，或者直接调用whisper模型的API。
 
 更多内容，请见项目：[tazz4843/whisper-rs: Rust bindings to https://github.com/ggerganov/whisper.cpp](https://github.com/tazz4843/whisper-rs)。
