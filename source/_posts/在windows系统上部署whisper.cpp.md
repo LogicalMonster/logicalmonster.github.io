@@ -51,19 +51,13 @@ vcpkg add port sdl2
 		}
 	],
 	"buildPresets": [
-        {
-            "name": "amd64-debug",
-            "displayName": "Visual Studio Community 2022 Release - amd64 - Debug",
-            "configurePreset": "amd64",
-            "configuration": "Debug"
-        },
-        {
-            "name": "amd64-release",
-            "displayName": "Visual Studio Community 2022 Release - amd64 - Release",
-            "configurePreset": "amd64",
-            "configuration": "Release"
-        }
-    ]
+		{
+			"name": "amd64-release",
+			"displayName": "Visual Studio Community 2022 Release - amd64 - Release",
+			"configurePreset": "amd64",
+			"configuration": "Release"
+		}
+	]
 }
 ```
 
