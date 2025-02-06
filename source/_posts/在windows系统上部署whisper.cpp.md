@@ -67,7 +67,7 @@ vcpkg add port sdl2
 }
 ```
 
-若使用的非英伟达显卡，去掉`"GGML_CUDA": "1",`这一行。
+若使用的非英伟达显卡，去掉`"GGML_CUDA": "1",`这一行。若使用英伟达显卡，需要安装cuda toolkit。
 
 将`examples\CMakeLists.txt`的第九行
 
