@@ -34,21 +34,21 @@ vcpkg add port sdl2
 	"configurePresets": [
 		{
 			"name": "amd64",
-		    "displayName": "Visual Studio Community 2022 Release - amd64",
-            "description": "将编译器用于 Visual Studio 17 2022 (x64 体系结构)",
-            "generator": "Visual Studio 17 2022",
-            "toolset": "host=x64",
-            "architecture": "x64",
-            "binaryDir": "${sourceDir}/build",
-            "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "GGML_CUDA": "1",
-                "WHISPER_SDL2": "ON"
-	        }
-	    }
+			"displayName": "Visual Studio Community 2022 Release - amd64",
+			"description": "将编译器用于 Visual Studio 17 2022 (x64 体系结构)",
+			"generator": "Visual Studio 17 2022",
+			"toolset": "host=x64",
+			"architecture": "x64",
+			"binaryDir": "${sourceDir}/build",
+			"cacheVariables": {
+				"CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+				"CMAKE_C_COMPILER": "cl.exe",
+				"CMAKE_CXX_COMPILER": "cl.exe",
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+				"GGML_CUDA": "1",
+				"WHISPER_SDL2": "ON"
+			}
+		}
 	],
 	"buildPresets": [
         {
