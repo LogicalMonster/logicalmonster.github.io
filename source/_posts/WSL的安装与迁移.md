@@ -19,4 +19,4 @@ ubuntu2204 config --default-user <username>
 
 具体可见：
 [WSL 的基本命令 | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands)
-[[WSL2教程] WSL安装linux系统以及从C盘迁移至其他盘_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1EF4m1V7pp/?spm_id_from=333.337.search-card.all.click&vd_source=0bba60c332ccedf1cb8cc66720f1610f)
+[WSL安装linux系统以及从C盘迁移至其他盘_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1EF4m1V7pp/?spm_id_from=333.337.search-card.all.click&vd_source=0bba60c332ccedf1cb8cc66720f1610f)
