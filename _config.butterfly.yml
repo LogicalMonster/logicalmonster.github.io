@@ -287,7 +287,7 @@ aside:
       link: https://github.com/LogicalMonster
   card_announcement:
     enable: true
-    content: 一个原专业是数学，却在学习数学过程中对编程感兴趣的转码人。目前对形式化验证和AI比较感兴趣，但兴趣不仅限于此。
+    content: 欢迎来到我的博客——这是一个记录我所思、所学与所感的角落。如果你对这里的内容有所共鸣，欢迎随时与我交流探讨。
   card_recent_post:
     enable: true
     # If set 0 will show all
