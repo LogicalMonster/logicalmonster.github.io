@@ -70,7 +70,7 @@ let k = j;
 // println!("j: {}", j); // error
 ```
 
-通过对比，可以感觉到Rust的所有权机制的确是一个比较不错的设计，在所有权的原语下，我们有更为彻底的移动语义，我们不必再引入右值引用，由此而产生的引用折叠，万能引用，完美转发、RVO、NRVO、复制省略、临时量实质化、值类别、左值、将亡值、纯右值、泛左值（左值+将亡值）、右值（将亡值+纯右值）、将不必再过分考虑。不过unsafe则像一个深渊，又要包装又要安全性，造成的上手难度比单纯的C指针似乎更大。或许我们需要的是一种可选性的渐进安全的语言标准。
+通过对比，可以感觉到Rust的所有权机制的确是一个比较不错的设计，在所有权的原语下，我们有更为彻底的移动语义，我们不必再引入右值引用，由此而产生的引用折叠，万能引用，完美转发、RVO、NRVO、复制省略、临时量实质化、值类别、左值、将亡值、纯右值、泛左值（左值+将亡值）、右值（将亡值+纯右值）、将不必再过分考虑。不过unsafe则像一个深渊，又要包装又要安全性，造成的上手难度比单纯的C指针似乎更大。或许我们需要的是一种可选性的渐进安全的语言标准。或许一个语言如果太像C++就可能会分裂与复杂。或许人们希望的是一门简洁但具有表达能力同时又具有一致性的语言，就像类型论与集合论一样。不知道这些问题会不会随着类型论和线性类型的发展与理解而得到解决。当然以上都可以看作是一个名词党的胡言乱语。
 
 ## C++ 指针、引用
 
@@ -96,10 +96,12 @@ void test0() {
     printf("*f: %s\n", f->c_str());
     std::string *const g = &a;
     printf("*g: %s\n", g->c_str());
+    // std::string *const g = d; // error
+    // printf("*g: %s\n", g->c_str()); // ok
     std::string const *const h = &a;
     printf("*h: %s\n", h->c_str());
     // std::string const *const h = &d;
-    // printf("h: %s\n", h.c_str()); // ok
+    // printf("*h: %s\n", h->c_str()); // ok
 }
 
 void test1() {
@@ -112,6 +114,8 @@ void test1() {
     std::string const d{c};
     std::string &g = a;
     printf("g: %s\n", g.c_str());
+    // std::string &g = d; // error
+    // printf("g: %s\n", g.c_str()); // ok
     std::string const& h = a;
     printf("h: %s\n", h.c_str());
     // std::string const& h = d;
@@ -147,11 +151,13 @@ void test2() {
     std::string const d{c};
     std::string &g = a;
     printf("g: %s\n", g.c_str());
+    // std::string &g = d; // error
+    // printf("g: %s\n", g.c_str()); // ok
     std::string const& h = a;
     printf("h: %s\n", h.c_str());
     // std::string const& h = d;
     // printf("h: %s\n", h.c_str()); // ok
-    std::string &&i = std::move(a);
+    std::string &&i{std::move(a)};
     i += "5";
     printf("a: %s\n", a.c_str());
     printf("i: %s\n", i.c_str());
@@ -164,13 +170,13 @@ void test2() {
     i += "7";
     printf("d: %s\n", d.c_str());
     printf("i: %s\n", i.c_str());
-    std::string const &&j = std::move(c);
+    std::string const &&j{std::move(c)};
     printf("c: %s\n", c.c_str());
     printf("j: %s\n", j.c_str());
-    std::string const &&k = std::move(j);
+    std::string const &&k{std::move(j)};
     printf("j: %s\n", j.c_str());
     printf("k: %s\n", k.c_str());
-    std::string const &&l = std::move(d);
+    std::string const &&l{std::move(d)};
     printf("d: %s\n", d.c_str());
     printf("l: %s\n", l.c_str());
 }
@@ -207,6 +213,8 @@ fn main() {
     println!("f: {}", f);
     let g = &mut a;
     println!("g: {}", g);
+    // let g = &mut d; // error
+    // println!("g: {}", g);
     let h = &a;
     println!("h: {}", h);
     // let h = &c; // ok
