@@ -166,27 +166,27 @@ int main() {
         }
     }
     size_t output{SIZE_MAX};
-    for (size_t foo = 1; foo < m; ++foo) {
+    for (size_t s = 1; s < m; ++s) {
         size_t a{};
         size_t b{};
         for (size_t i = 0; i < n; ++i) {
-            for (size_t j = 0; j < foo; ++j) {
+            for (size_t j = 0; j < s; ++j) {
                 a += mat[i][j];
             }
-            for (size_t j = foo; j < m; ++j) {
+            for (size_t j = s; j < m; ++j) {
                 b += mat[i][j];
             }
         }
         output = std::min(output, (a > b ? a - b : b - a));
     }
-    for (size_t foo = 1; foo < n; ++foo) {
+    for (size_t s = 1; s < n; ++s) {
         size_t a{};
         size_t b{};
         for (size_t j = 0; j < m; ++j) {
-            for (size_t i = 0; i < foo; ++i) {
+            for (size_t i = 0; i < s; ++i) {
                 a += mat[i][j];
             }
-            for (size_t i = foo; i < n; ++i) {
+            for (size_t i = s; i < n; ++i) {
                 b += mat[i][j];
             }
         }
@@ -196,10 +196,51 @@ int main() {
 }
 ```
 
-时间复杂度：
-O(n * m^2 + n^2 * m)
+时间复杂度：O(n * m^2 + n^2 * m)
+空间复杂度：O(n * m)
 
-空间复杂度：
-O(n * m)
+二维前缀和解法：
 
-还剩前缀和写法
+```cpp
+#include <iostream>
+#include <vector>
+
+int main() {
+    size_t n{};
+    size_t m{};
+    std::cin >> n >> m;
+    std::vector<std::vector<int>> mat(n, std::vector<int>(m));
+    std::vector<std::vector<int>> p(n, std::vector<int>(m));
+    for (size_t i = 0; i < n; i++)
+    {
+        for (size_t j = 0; j < m; j++)
+        {
+            size_t a{};
+            std::cin >> a;
+            p[i][j] += a;
+            if (i != 0) {
+                p[i][j] += p[i - 1][j];
+            }
+            if (j != 0) {
+                p[i][j] += p[i][j - 1];
+            }
+            if (i != 0 && j != 0) {
+                p[i][j] -= p[i - 1][j - 1];
+            }
+        }
+    }
+    size_t output{SIZE_MAX};
+    for (size_t i = 0; i < n - 1; ++i) {
+        size_t a{p[n - 1][m - 1] > 2 * p[i][m - 1] ? p[n - 1][m - 1] - 2 * p[i][m - 1] : 2 * p[i][m - 1] - p[n - 1][m - 1]};
+        output = std::min(output, a);
+    }
+    for (size_t j = 0; j < m - 1; ++j) {
+        size_t a{p[n - 1][m - 1] > 2 * p[n - 1][j] ? p[n - 1][m - 1] - 2 * p[n - 1][j] : 2 * p[n - 1][j] - p[n - 1][m - 1]};
+        output = std::min(output, a);
+    }
+    std::cout << output;
+}
+```
+
+时间复杂度：O(n * m)
+空间复杂度：O(n * m)
